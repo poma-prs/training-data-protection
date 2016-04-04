@@ -4,6 +4,7 @@
 # User-specific files
 *.suo
 *.user
+!src/data-protection-sln/src/Web.User/
 *.userosscache
 *.sln.docstates
 
