@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0-*",
+  "frameworks": {
+    "net45": {
+      "wrappedProject": "../../Protection/Protection.csproj",
+      "bin": {
+        "assembly": "../../Protection/obj/{configuration}/Protection.dll",
+        "pdb": "../../Protection/obj/{configuration}/Protection.pdb"
+      }
+    }
+  }
+}

@@ -1,28 +1,28 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using System.Web.Mvc;
 using Protection.Methods;
 using Web.User.Models;
 
-namespace Web.User.Controllers
+namespace Web.Controllers
 {
     public class ProtectionController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
         [HttpGet]
-        public IActionResult KeySingleProtection()
+        public ActionResult KeySingleProtection()
         {
+            var key = new KeySinglePermutationModel.KeyModel()
+            {
+                RowCount = 3,
+                KeyWord = "ПАМИР"
+            };
             return View(new KeySinglePermutationModel()
             {
-                Input = new KeySinglePermutationModel.InputModel() { Key = new KeySinglePermutationModel.KeyModel() },
+                Input = new KeySinglePermutationModel.InputModel() { Key = key, Value = "ВРАГБУДЕТРАЗБИТ" },
                 Output = new KeySinglePermutationModel.OutputModel() { Key = new KeySinglePermutationModel.KeyModel() }
             });
         }
 
         [HttpPost]
-        public IActionResult EncryptKeySingleProtection([FromBody] KeySinglePermutationModel.InputModel inputModel)
+        public ActionResult EncryptKeySingleProtection(KeySinglePermutationModel.InputModel inputModel)
         {
             var method = new KeySinglePermutation();
             var key = new KeySinglePermutation.Key(inputModel.Key.RowCount, inputModel.Key.KeyWord);
@@ -42,7 +42,8 @@ namespace Web.User.Controllers
             return View("KeySingleProtection", result);
         }
 
-        public IActionResult DecryptKeySinglePermutation([FromBody] KeySinglePermutationModel.OutputModel outputModel)
+        [HttpPost]
+        public ActionResult DecryptKeySinglePermutation(KeySinglePermutationModel.OutputModel outputModel)
         {
             var method = new KeySinglePermutation();
             var key = new KeySinglePermutation.Key(outputModel.Key.RowCount, outputModel.Key.KeyWord);

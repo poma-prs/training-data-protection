@@ -1,0 +1,13 @@
+﻿@using System.Threading.Tasks
+@using Web.User.Models
+@model KeySinglePermutationModel
+
+@{
+    ViewBag.Title = "Key Single Permutation";
+}
+
+<h2>Key Single Permutation</h2>
+
+@Html.Partial("_InputFormPartial", Model.Input)
+
+@Html.Partial("_OutputFormPartial", Model.Output)

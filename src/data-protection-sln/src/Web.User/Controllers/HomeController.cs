@@ -6,7 +6,7 @@ namespace Web.User.Controllers
     {
         public IActionResult Index()
         {
-            return RedirectToAction("Index", "Protection");
+            return View();
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿@model Web.User.Models.KeySinglePermutationModel.InputModel
+
+@using (Html.BeginForm("EncryptKeySingleProtection", "Protection", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Input</legend>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Row Count</label>
+            <div class="col-md-4">
+                @{
+                    var asd = Model.Key;
+                }
+                @Html.TextBoxFor(x => x.Key.RowCount, htmlAttributes: new {@class = "form-control input-md"})
+            </div>
+        </div>
+
+        <!-- Text input-->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Key Word</label>
+            <div class="col-md-4">
+                @Html.TextBoxFor(x => x.Key.KeyWord, htmlAttributes: new { @class = "form-control input-md" })
+            </div>
+        </div>
+
+        <!-- Textarea -->
+        <div class="form-group">
+            <label class="col-md-4 control-label">Value</label>
+            <div class="col-md-4">
+                @Html.TextAreaFor(x => x.Value, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-4 control-label"></label>
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Encrypt</button>
+            </div>
+        </div>
+
+    </fieldset>
+}
